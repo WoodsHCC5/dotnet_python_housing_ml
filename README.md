@@ -2,6 +2,11 @@
 
 An educational demo showing how a .NET 9 worker hosts embedded Python (via CSnakes) to perform basic exploratory data analysis and train baseline regression models (SVR, Random Forest, Linear Regression) on a housing prices dataset. Plots are generated headlessly and saved as images; model performance is printed as Mean Absolute Percentage Error (MAPE).
 
+> Python feature engineering + model flow is adapted (and simplified) from the public tutorial:  
+> House Price Prediction Using Machine Learning in Python (GeeksforGeeks)  
+> https://www.geeksforgeeks.org/machine-learning/house-price-prediction-using-machine-learning-in-python/  
+> This repository re-hosts the concept inside a .NET environment; code has been refactored for embedding, plotting to files, and concise baseline modeling.
+
 ---
 
 ## ✨ Features
@@ -49,12 +54,17 @@ Check the console and project directory for output artifacts and metrics.
 ---
 
 ## 📂 Project Layout
-. ├─ Program.cs                # Host + Python environment setup + file dispatch ├─ data_processor.py         # EDA, preprocessing, modeling ├─ requirements.txt          # Python dependencies ├─ HousePricePrediction.xlsx # Input dataset (supply locally) ├─ *.png                     # Generated artifacts (after run) └─ README.md
+.
+├─ Program.cs                # Host + Python environment setup + file dispatch  
+├─ data_processor.py         # EDA, preprocessing, modeling  
+├─ requirements.txt          # Python dependencies  
+├─ HousePricePrediction.xlsx # Input dataset (supply locally)  
+├─ *.png                     # Generated artifacts (after run)  
+└─ README.md
 
 ---
 
 ## 🔄 Processing Pipeline
-
 Load Excel → Inspect dtypes → Generate plots → Clean/Impute → One-Hot Encode categoricals → Train/Test Split → Train SVR / RandomForest / LinearRegression → Print MAPE metrics
 
 ---
@@ -80,7 +90,6 @@ No global Python installation required—the redistributable and virtual environ
 ---
 
 ## ▶ Running
-
 Visual Studio:
 1. Place `HousePricePrediction.xlsx` alongside `Program.cs`.
 2. Build (__Build Solution__).
@@ -119,7 +128,7 @@ Outputs (plots, metrics) will be in the project directory post-execution.
 ---
 
 ## ⚠ Disclaimer
-This is a learning/demo setup—no production hardening, performance optimization, or rigorous validation included.
+This is a learning/demo setup—no production hardening, performance optimization, or rigorous validation included. Python modeling approach conceptually follows (but does not verbatim copy) the referenced GeeksforGeeks tutorial; adaptations were made for embedding and environment constraints.
 
 ---
 
