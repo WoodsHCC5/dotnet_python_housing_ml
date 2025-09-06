@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net9.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<Target Name="PostBuildFixup" AfterTargets="PostBuildEvent">
+		<PropertyGroup>
+			<SourceTclDir>$(AppData)\CSnakes\python3.12.9\python\install\tcl</SourceTclDir>
+			<DestTclDir>$(AppData)\CSnakes\python3.12.9\python\install\lib</DestTclDir>
+		</PropertyGroup>
+		<Exec Command="robocopy &quot;$(SourceTclDir)&quot; &quot;$(DestTclDir)&quot; /E /IS /IT || if %25errorlevel%25 lss 8 exit /b 0" />
+	</Target>
+
+	<ItemGroup>
+		<PackageReference Include="CSnakes.Runtime" Version="1.2.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<AdditionalFiles Include="requirements.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</AdditionalFiles>
+	</ItemGroup>
+	<ItemGroup>
+		<AdditionalFiles Include="HousePricePrediction.xlsx">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</AdditionalFiles>
+	</ItemGroup>
+	<ItemGroup>
+		<AdditionalFiles Include="data_processor.py">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</AdditionalFiles>
+	</ItemGroup>
+</Project>
